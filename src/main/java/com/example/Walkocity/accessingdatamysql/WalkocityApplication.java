@@ -17,7 +17,7 @@ public class WalkocityApplication extends SpringBootServletInitializer {
 
     @GetMapping("/hello")
     public String hello(@RequestParam(value ="name", defaultValue="World") String name) {
-        return String.format("Let's take a walk, %s!", name);
+        return String.format("Testing   Let's take a walk, %s!", name);
     }
 
     //HEJ! IGEN !! !!!
