@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class TrashCan {
+public class Trashcan {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
