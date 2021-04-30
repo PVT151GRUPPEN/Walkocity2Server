@@ -11,8 +11,8 @@ public class Trashcan {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-//
-/*    private Double longitude;
+
+    private Double longitude;
 
     private Double latitude;
 
@@ -48,6 +48,6 @@ public class Trashcan {
 
     public void setLiter(Double liter) {
         this.liter = liter;
-    }*/
+    }
 
 }

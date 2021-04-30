@@ -22,7 +22,7 @@ public class MainController {
         // @RequestParam means it is a parameter from the GET or POST request
 
 
-        /*Double longi = Double.parseDouble(longitude);
+        Double longi = Double.parseDouble(longitude);
         Double lat = Double.parseDouble(latitude);
         Double lit = Double.parseDouble(liter);
 
@@ -30,7 +30,7 @@ public class MainController {
         c.setLongitude(longi);
         c.setLatitude(lat);
         c.setLiter(lit);
-        trashcanRepository.save(c);*/
+        trashcanRepository.save(c);
         return "Saved";
     }
 
