@@ -20,7 +20,7 @@ public class Trashcan {
     public void setName(String name) {
         this.name = name;
     }
-
+//
 /*    private Double longitude;
 
     private Double latitude;
