@@ -11,25 +11,25 @@ public class Trashcan {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    private double longitude;
+    private Double longitude;
 
-    private double latitude;
+    private Double latitude;
 
-    private double liter;
+    private Double liter;
 
     public Integer getId() {
         return id;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public double getLiter() {
+    public Double getLiter() {
         return liter;
     }
 
@@ -37,15 +37,15 @@ public class Trashcan {
         this.id = id;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
-    public void setLiter(double liter) {
+    public void setLiter(Double liter) {
         this.liter = liter;
     }
 
