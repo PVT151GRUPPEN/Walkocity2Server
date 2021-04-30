@@ -11,7 +11,17 @@ public class Trashcan {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    private Double longitude;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+/*    private Double longitude;
 
     private Double latitude;
 
@@ -47,6 +57,6 @@ public class Trashcan {
 
     public void setLiter(Double liter) {
         this.liter = liter;
-    }
+    }*/
 
 }
