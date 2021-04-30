@@ -6,14 +6,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Coordinate {
+public class TrashCan {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
+
     private double longitude;
 
     private double latitude;
 
     private int liter;
+
+    public Integer getId() {
+        return id;
+    }
 
     public double getLatitude() {
         return latitude;
@@ -25,6 +31,10 @@ public class Coordinate {
 
     public int getLiter() {
         return liter;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setLatitude(double latitude) {

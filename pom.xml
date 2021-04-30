@@ -85,7 +85,7 @@
 		<repository>
 			<id>internal.repo</id>
 			<name>Internal repo</name>
-			<url>git@github.com/PVT151GRUPPEN/Walkocity.git</url>
+			<url>git@github.com/PVT151GRUPPEN/Walkocity2Server.git</url>
 		</repository>
 	</distributionManagement>
 
