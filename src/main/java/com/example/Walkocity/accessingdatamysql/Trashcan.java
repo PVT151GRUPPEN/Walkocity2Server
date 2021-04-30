@@ -15,7 +15,7 @@ public class Trashcan {
 
     private double latitude;
 
-    private int liter;
+    private double liter;
 
     public Integer getId() {
         return id;
@@ -29,7 +29,7 @@ public class Trashcan {
         return longitude;
     }
 
-    public int getLiter() {
+    public double getLiter() {
         return liter;
     }
 
@@ -45,7 +45,7 @@ public class Trashcan {
         this.longitude = longitude;
     }
 
-    public void setLiter(int liter) {
+    public void setLiter(double liter) {
         this.liter = liter;
     }
 

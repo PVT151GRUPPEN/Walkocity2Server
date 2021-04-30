@@ -16,15 +16,20 @@ public class MainController {
     private TrashcanRepository trashCanRepository;
 
     @PostMapping(path="/add") // Map ONLY POST Requests
-    public @ResponseBody String addNewCoordinate (@RequestParam double longitude
-            , @RequestParam double latitude, @RequestParam int liter) {
+    public @ResponseBody String addNewCoordinate (@RequestParam String longitude
+            , @RequestParam String latitude, @RequestParam String liter) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
+
+        double longi = Double.parseDouble(longitude);
+        double lat = Double.parseDouble(latitude);
+        double lit = Double.parseDouble(liter);
+
         Trashcan c = new Trashcan();
-        c.setLongitude(longitude);
-        c.setLatitude(latitude);
-        c.setLiter(liter);
+        c.setLongitude(longi);
+        c.setLatitude(lat);
+        c.setLiter(lit);
         trashCanRepository.save(c);
         return "Saved";
     }
