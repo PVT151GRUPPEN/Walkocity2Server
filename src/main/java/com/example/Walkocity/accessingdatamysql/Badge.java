@@ -40,26 +40,25 @@ public class Badge {
     }*/
     enum Category {
         TOILET(1), TRASHCAN(2);
-        private final int categoryName;
+        private final int categoryOption;
 
         private Category(int categoryName) {
-            this.categoryName = categoryName;
+            this.categoryOption = categoryName;
         }
-        public int getCategoryName() {
-            return categoryName;
+        public int getCategoryOption() {
+            return categoryOption;
         }
     }
     enum Level {
         BRONZE(1), SILVER(2), GOLD(3), RUBY(4), DIAMOND(5);
-        private final int levelName;
+        private final int levelNo;
 
-
-        Level(int levelName) {
-            this.levelName = levelName;
+        Level(int levelNo) {
+            this.levelNo = levelNo;
         }
 
-        public int getLevelName() {
-            return levelName;
+        public int getLevelNo() {
+            return levelNo;
         }
     }
 
@@ -67,14 +66,20 @@ public class Badge {
 
     }
 
-    public Badge (int points, Category category, Level level) {
-        this.points = points;
+    public Badge (Category category, Level level) {
         this.category = category;
         this.level = level;
-    }
 
-    public void setPoints(int points) {
-        this.points = points;
+        if (level.getLevelNo() == 1) //trying numbers instead of levelName so SQL is happy
+            points = 100;
+        if (level.getLevelNo()  == 2)
+            points = 500;
+        if (level.getLevelNo()  == 3)
+            points = 1000;
+        if (level.getLevelNo()  == 4)
+            points = 5000;
+        if (level.getLevelNo()  == 5)
+            points = 10000;
     }
 
     private void setCategory(Category category) {
@@ -85,9 +90,14 @@ public class Badge {
         this.level = level;
     }
 
+    public void setAchieved() {
+        this.achieved = true;
+    }
+
     public int getPoints() {
         return points;
     }
+
     public Category getCategory() {
         return category;
     }
@@ -96,7 +106,7 @@ public class Badge {
         return level;
     }
 
-    public void setAchieved() {
-        this.achieved = true;
+    public boolean isAchieved() {
+        return achieved;
     }
 }
