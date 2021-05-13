@@ -15,10 +15,28 @@ public class Badge {
     private Level level;
 
     enum Category {
-        TOILET, TRASHCAN
+        TOILET("Toilet"), TRASHCAN("Trashcan");
+        private final String categoryName;
+
+        private Category(String categoryName) {
+            this.categoryName = categoryName;
+        }
+        public String getCategoryName() {
+            return categoryName;
+        }
     }
     enum Level {
-        BRONZE, SILVER, GOLD, RUBY, DIAMOND
+        BRONZE("Bronze"), SILVER("Silver"), GOLD("Gold"), RUBY("Ruby"), DIAMOND("Diamond");
+        private final String levelName;
+
+
+        Level(String levelName) {
+            this.levelName = levelName;
+        }
+
+        public String getLevelName() {
+            return levelName;
+        }
     }
 
     public Badge() {
