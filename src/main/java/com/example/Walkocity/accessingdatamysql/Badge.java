@@ -1,5 +1,6 @@
 package com.example.Walkocity.accessingdatamysql;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -8,9 +9,9 @@ import javax.persistence.IdClass;
 public class Badge {
     private int points = 0;
     private boolean achieved = false;
-    @Id
+    @Id @Column(updatable = false)
     private Category category;
-    @Id
+    @Id @Column(updatable = false)
     private Level level;
 
     enum Category {
@@ -34,11 +35,11 @@ public class Badge {
         this.points = points;
     }
 
-    public void setCategory(Category category) {
+    private void setCategory(Category category) {
         this.category = category;
     }
 
-    public void setLevel(Level level) {
+    private void setLevel(Level level) {
         this.level = level;
     }
 

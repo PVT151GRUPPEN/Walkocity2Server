@@ -8,7 +8,7 @@ import java.util.List;
 public class UserAccomplishment {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Integer id; //kanske egentligen kan ha foreign key och hänvisa till userId
     private int level;
     private int points;
     @OneToMany
@@ -23,7 +23,7 @@ public class UserAccomplishment {
         this.id = id;
     }
 
-    public void setLevel(int level) {
+    public void seLevel(int level) {
         this.level = level;
     }
 
