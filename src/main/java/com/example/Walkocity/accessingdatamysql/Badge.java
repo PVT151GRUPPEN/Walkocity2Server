@@ -2,8 +2,9 @@ package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 
-@Entity
+@Entity @IdClass(BadgeKey.class)
 public class Badge {
     private int points = 0;
     private boolean achieved = false;
