@@ -1,12 +1,15 @@
 package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Badge {
     private int points = 0;
     private boolean achieved = false;
+    @Id
     private Category category;
+    @Id
     private Level level;
 
     enum Category {
@@ -15,6 +18,11 @@ public class Badge {
     enum Level {
         BRONZE, SILVER, GOLD, RUBY, DIAMOND
     }
+
+    public Badge() {
+
+    }
+
     public Badge (int points, Category category, Level level) {
         this.points = points;
         this.category = category;
