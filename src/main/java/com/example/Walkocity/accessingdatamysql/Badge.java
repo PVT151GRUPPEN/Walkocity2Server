@@ -14,7 +14,7 @@ public class Badge {
     @Id @Column(updatable = false)
     private Level level;
 
-    enum Category {
+    /*enum Category {
         TOILET("Toilet"), TRASHCAN("Trashcan");
         private final String categoryName;
 
@@ -35,6 +35,30 @@ public class Badge {
         }
 
         public String getLevelName() {
+            return levelName;
+        }
+    }*/
+    enum Category {
+        TOILET(1), TRASHCAN(2);
+        private final int categoryName;
+
+        private Category(int categoryName) {
+            this.categoryName = categoryName;
+        }
+        public int getCategoryName() {
+            return categoryName;
+        }
+    }
+    enum Level {
+        BRONZE(1), SILVER(2), GOLD(3), RUBY(4), DIAMOND(5);
+        private final int levelName;
+
+
+        Level(int levelName) {
+            this.levelName = levelName;
+        }
+
+        public int getLevelName() {
             return levelName;
         }
     }
