@@ -6,13 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Trashcan {
+public class TrashCan {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-//
-/*    private Double longitude;
+
+    private Double longitude;
 
     private Double latitude;
 
@@ -48,6 +48,6 @@ public class Trashcan {
 
     public void setLiter(Double liter) {
         this.liter = liter;
-    }*/
+    }
 
 }

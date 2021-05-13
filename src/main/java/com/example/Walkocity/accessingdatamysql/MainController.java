@@ -22,20 +22,20 @@ public class MainController {
         // @RequestParam means it is a parameter from the GET or POST request
 
 
-        /*Double longi = Double.parseDouble(longitude);
+        Double longi = Double.parseDouble(longitude);
         Double lat = Double.parseDouble(latitude);
         Double lit = Double.parseDouble(liter);
 
-        Trashcan c = new Trashcan();
+        TrashCan c = new TrashCan();
         c.setLongitude(longi);
         c.setLatitude(lat);
         c.setLiter(lit);
-        trashcanRepository.save(c);*/
+        trashcanRepository.save(c);
         return "Saved";
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<Trashcan> getAllCoordinates() {
+    public @ResponseBody Iterable<TrashCan> getAllCoordinates() {
         // This returns a JSON or XML with the users
         return trashcanRepository.findAll();
     }
