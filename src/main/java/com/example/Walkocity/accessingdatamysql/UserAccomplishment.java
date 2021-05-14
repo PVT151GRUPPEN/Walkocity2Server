@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class UserAccomplishment {
+public class UserAccomplishment { //detta ska då kopplas ihop med det som ska displayas: bilder och vissa vilka badges som är aktiva eller ej
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id; //kanske egentligen kan ha foreign key och hänvisa till userId
     private int level;
-    private int points;
+    private int points; //hur gör vi med stationer och dess poäng, blir isf en litenliten klass
     @OneToMany
     private List<Badge> badges = new ArrayList<>();
 
@@ -23,7 +23,7 @@ public class UserAccomplishment {
         this.id = id;
     }
 
-    public void seLevel(int level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
