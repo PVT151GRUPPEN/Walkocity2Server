@@ -151,6 +151,8 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
             level = 9;
         if(points == 10000)
             level = 10;
+        if(points == 10000)
+            level = 11;
         if(points == 20000)
             level = 12;
         if(points == 30000)
