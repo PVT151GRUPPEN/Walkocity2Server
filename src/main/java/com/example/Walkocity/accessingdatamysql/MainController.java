@@ -48,9 +48,15 @@ public class MainController {
         return "Saved";
     }
 
-    @GetMapping(path="/all")
+    @GetMapping(path="/all/trashcans/")
     public @ResponseBody Iterable<TrashCan> getAllCoordinates() {
         // This returns a JSON or XML with the users
         return trashcanRepository.findAll();
+    }
+
+    @GetMapping(path="/all/useraccounts/")
+    public @ResponseBody Iterable<UserAccount> getAllUserAccounts() {
+        // This returns a JSON or XML with the users
+        return userAccountRepository.findAll();
     }
 }
