@@ -9,7 +9,7 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
 
     @OneToOne
     @Id @Column(updatable = false)
-    private UserAccount owner; //Ersätts av User-instans eller liknande
+    private User owner; //Ersätts av User-instans eller liknande
     private String location;
     @Id @Column(updatable = false)
     private String date;
@@ -20,7 +20,7 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
     private String language;
     private int takenSlots;
 
-    public WalkEvent(String eventName, UserAccount owner, String location, String date, String time, String slots, String gender, String language) {
+    public WalkEvent(String eventName, User owner, String location, String date, String time, String slots, String gender, String language) {
         this.eventName = eventName;
         this.owner = owner;
         this.location = location;
@@ -44,7 +44,7 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
         return eventName;
     }
 
-    public UserAccount getOwner() {
+    public User getOwner() {
         return owner;
     }
 
