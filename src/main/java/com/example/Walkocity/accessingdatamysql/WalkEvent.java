@@ -29,7 +29,7 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
         if (slots.equals("unlimited")) {
             this.slots = Integer.MAX_VALUE;
         } else {
-            this.slots = Integer.valueOf(slots);
+            this.slots = Integer.parseInt(slots);
         }
         this.gender = gender;
         this.language = language;
@@ -108,8 +108,6 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
             return false;
         WalkEvent other = (WalkEvent) obj;
         return (eventName.compareToIgnoreCase(other.getEventName()) == 0 &&
-                owner.getFirstName().compareToIgnoreCase(other.getOwner().getFirstName()) == 0 &&
-                owner.getLastName().compareToIgnoreCase(other.getOwner().getLastName()) == 0 &&
                 location.compareToIgnoreCase(other.getLocation()) == 0 &&
                 date.compareToIgnoreCase(other.getDate()) == 0 &&
                 time.compareToIgnoreCase(other.getTime()) == 0);

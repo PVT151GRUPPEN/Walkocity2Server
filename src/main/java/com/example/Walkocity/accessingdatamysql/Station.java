@@ -7,8 +7,8 @@ public class Station {
     @Id //ska vara unik
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id; //eller longitud latitud för att vara korrekt
-    private Category category; //what association
-    private int points;
+    private StationCategory category;
+    private int points = 100;
     //private boolean collected;
 
     public Station() {
@@ -23,11 +23,11 @@ public class Station {
         return id;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(StationCategory category) {
         this.category = category;
     }
 
-    public Category getCategory() {
+    public StationCategory getCategory() {
         return category;
     }
 

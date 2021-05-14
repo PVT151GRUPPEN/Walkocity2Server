@@ -10,7 +10,7 @@ public class JoinedWalkList {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id; //kanske egentligen kan ha foreign key och hänvisa till userId
 
-
+    @OneToMany
     private List<WalkEvent> joinedWalks = new ArrayList<>();
 
     public void setId(Integer id) {

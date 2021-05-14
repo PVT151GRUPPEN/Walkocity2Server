@@ -10,7 +10,7 @@ public class Badge {
     private int points = 0;
     private boolean achieved = false;
     @Id @Column(updatable = false)
-    private Category category;
+    private StationCategory category;
     @Id @Column(updatable = false)
     private Level level;
 
@@ -56,8 +56,23 @@ public class Badge {
 
     }
 
-    public Badge (Category category, Level level) {
+    public Badge (StationCategory category, Level level) { //for categories
         this.category = category;
+        this.level = level;
+
+        if (level.getLevelNo() == 1) //trying numbers instead of levelName so SQL is happy
+            points = 10;
+        if (level.getLevelNo()  == 2)
+            points = 50;
+        if (level.getLevelNo()  == 3)
+            points = 100;
+        if (level.getLevelNo()  == 4)
+            points = 500;
+        if (level.getLevelNo()  == 5)
+            points = 1000;
+    }
+
+    public Badge(Level level) { //for stations
         this.level = level;
 
         if (level.getLevelNo() == 1) //trying numbers instead of levelName so SQL is happy
@@ -72,7 +87,7 @@ public class Badge {
             points = 10000;
     }
 
-    private void setCategory(Category category) {
+    private void setCategory(StationCategory category) {
         this.category = category;
     }
 
@@ -88,7 +103,7 @@ public class Badge {
         return points;
     }
 
-    public Category getCategory() {
+    public StationCategory getCategory() {
         return category;
     }
 
