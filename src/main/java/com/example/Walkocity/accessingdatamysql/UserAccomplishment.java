@@ -11,8 +11,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
     private Integer id; //kanske egentligen kan ha foreign key och hänvisa till userId
     private int level;
     private int points; //hur gör vi med stationer och dess poäng, blir isf en litenliten klass
-    @OneToMany
-    private List<Badge> badges = new ArrayList<>(); //ska man ha separate listor för kategorierna
+    //private List<Badge> badges = new ArrayList<>(); //ska man ha separate listor för kategorierna
     private int toiletCount = 0; //
     private int trashCount = 0;
     private int stationCount = 0;
@@ -22,6 +21,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
         this.points = 0;
     }
 
+    /*
 
     public void addPoints(int points) { //ska användas av stationer och badges
         this.points += points;
@@ -30,7 +30,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
 
     public void addBadge(Badge badge) {
         addPoints(badge.getPoints());
-        badges.add(badge);
+       // badges.add(badge);
     }
 
     public void addStation(Station station) {
@@ -51,27 +51,27 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
     public void checkToiletLevel() {  //delar ut badges när ett visst antal nås
         if (toiletCount == 1) {
             Badge b = new Badge(StationCategory.TOILET, Badge.Level.BRONZE);
-            badges.add(b);
+          //  badges.add(b);
             addPoints(b.getPoints());
         }
         if (toiletCount == 5) {
             Badge b = new Badge(StationCategory.TOILET, Badge.Level.SILVER);
-            badges.add(b);
+          //  badges.add(b);
             addPoints(b.getPoints());
         }
         if (toiletCount == 10) {
             Badge b = new Badge(StationCategory.TOILET, Badge.Level.GOLD);
-            badges.add(b);
+          //  badges.add(b);
             addPoints(b.getPoints());
         }
         if (toiletCount == 50) {
             Badge b = new Badge(StationCategory.TOILET, Badge.Level.DIAMOND);
-            badges.add(b);
+         //   badges.add(b);
             addPoints(b.getPoints());
         }
         if (toiletCount == 100) {
             Badge b = new Badge(StationCategory.TOILET, Badge.Level.RUBY);
-            badges.add(b);
+          //  badges.add(b);
             addPoints(b.getPoints());
         }
     }
@@ -79,7 +79,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
     public void checkTrashLevel() {
         if (trashCount == 1) {
             Badge b = new Badge(StationCategory.TRASHCAN, Badge.Level.BRONZE);
-            badges.add(b);
+          //  badges.add(b);
             addPoints(b.getPoints());
         }
         if (trashCount == 5) {
@@ -190,4 +190,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
     public List<Badge> getBadges() {
         return badges;
     }
+
+
+     */
 }
