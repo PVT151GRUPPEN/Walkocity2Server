@@ -11,7 +11,6 @@ public class TrashCan {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-
     private Double longitude;
 
     private Double latitude;

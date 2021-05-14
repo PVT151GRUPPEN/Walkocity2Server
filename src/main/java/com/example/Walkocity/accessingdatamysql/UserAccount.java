@@ -1,7 +1,7 @@
 package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class UserAccount {
@@ -11,17 +11,15 @@ public class UserAccount {
 
     private String email;
 
-    private char password;
+    private char[] password;
 
-    private Date startDate;
+    private LocalDate startDate;
 
     @OneToOne
     private UserAccomplishment accomp;
 
     @OneToOne
     private UserFriendList friendList;
-
-
 
     public Integer getId() {
         return id;
@@ -39,19 +37,19 @@ public class UserAccount {
         this.email = email;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public char getPassword() { //security check
+    public char[] getPassword() { //security check
         return password;
     }
 
-    public void setPassword(char password) {
+    public void setPassword(char[] password) {
         this.password = password;
     }
 }
