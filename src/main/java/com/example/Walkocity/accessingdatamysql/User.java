@@ -1,9 +1,6 @@
 package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
