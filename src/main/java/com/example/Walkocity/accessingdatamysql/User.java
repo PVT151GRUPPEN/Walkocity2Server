@@ -7,6 +7,7 @@ public class User {
 
     @Id //ska vara unik
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String firstName;
     private String lastName;
     private Integer age;
@@ -22,6 +23,14 @@ public class User {
 
     @OneToOne
     private UserFriendList friendList;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;

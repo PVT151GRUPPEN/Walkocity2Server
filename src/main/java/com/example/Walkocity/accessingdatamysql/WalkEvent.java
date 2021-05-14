@@ -1,6 +1,5 @@
 package com.example.Walkocity.accessingdatamysql;
 
-import org.springframework.lang.Nullable;
 import javax.persistence.*;
 
 @Entity @IdClass(WalkEventKey.class)
@@ -112,23 +111,4 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
         takenSlots--;
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(@Nullable Object obj) {
-        if (obj == this)
-            return true;
-        if (!(obj instanceof WalkEvent))
-            return false;
-        WalkEvent other = (WalkEvent) obj;
-        return (eventName.compareToIgnoreCase(other.getEventName()) == 0 &&
-                owner.getFirstName().compareToIgnoreCase(other.getOwner().getFirstName()) == 0 &&
-                owner.getLastName().compareToIgnoreCase(other.getOwner().getLastName()) == 0 &&
-                location.compareToIgnoreCase(other.getLocation()) == 0 &&
-                date.compareToIgnoreCase(other.getDate()) == 0 &&
-                time.compareToIgnoreCase(other.getTime()) == 0);
-    }
 }
