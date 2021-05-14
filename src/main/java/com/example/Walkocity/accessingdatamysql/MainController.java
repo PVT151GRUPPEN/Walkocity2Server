@@ -39,11 +39,10 @@ public class MainController {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-        String email = emailInput;
         char[] password = passwordInput.toCharArray();
 
         UserAccount user = new UserAccount();
-        user.setEmail(email);
+        user.setEmail(emailInput);
         user.setPassword(password);
         userAccountRepository.save(user);
         return "Saved";
