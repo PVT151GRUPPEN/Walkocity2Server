@@ -1,7 +1,7 @@
 package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
@@ -9,15 +9,11 @@ public class User {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    private String firstName;
-
-    private String lastName;
-
     private String email;
 
-    private char password;
+    private char[] password;
 
-    private Date startDate;
+    private LocalDate startDate;
 
     @OneToOne
     private UserAccomplishment accomp;
@@ -25,30 +21,12 @@ public class User {
     @OneToOne
     private UserFriendList friendList;
 
-
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String name) {
-        this.firstName = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -59,19 +37,19 @@ public class User {
         this.email = email;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public char getPassword() { //security check
+    public char[] getPassword() { //security check
         return password;
     }
 
-    public void setPassword(char password) {
+    public void setPassword(char[] password) {
         this.password = password;
     }
 }
