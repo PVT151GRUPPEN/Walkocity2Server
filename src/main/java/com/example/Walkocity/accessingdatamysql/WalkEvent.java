@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allmänna walks
     private String eventName;
 
-    @OneToOne
-    @Id @Column(updatable = false)
+
+    @Id @OneToOne
     private User owner; //Ersätts av User-instans eller liknande
     private String location;
     @Id @Column(updatable = false)
