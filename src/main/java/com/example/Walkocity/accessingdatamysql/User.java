@@ -2,6 +2,8 @@ package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
@@ -13,8 +15,11 @@ public class User {
     private Integer age;
     private String gender;
     private String country;
-    private String[] languages;
 
+    /* Måste vara lista av Languages (klass)?
+    @OneToMany
+    private List<String> languages = new ArrayList<>();
+*/
     @OneToOne
     private UserAccomplishment accomp;
 
@@ -60,7 +65,7 @@ public class User {
     public String getCountry() {
         return country;
     }
-
+/*
     public void setLanguages(String[] languages) {
         this.languages = languages;
     }
@@ -68,7 +73,7 @@ public class User {
     public String[] getLanguages() {
         return languages;
     }
-
+*/
     public void setAccomp(UserAccomplishment accomp) {
         this.accomp = accomp;
     }
