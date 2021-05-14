@@ -11,9 +11,9 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
     @Id @OneToOne
     private User owner; //Ersätts av User-instans eller liknande
     private String location;
-    @Id @Column(updatable = false)
+    @Id
     private String date;
-    @Id @Column(updatable = false)
+    @Id
     private String time;
     private int slots;
     private String gender;
@@ -125,6 +125,8 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
             return false;
         WalkEvent other = (WalkEvent) obj;
         return (eventName.compareToIgnoreCase(other.getEventName()) == 0 &&
+                owner.getFirstName().compareToIgnoreCase(other.getOwner().getFirstName()) == 0 &&
+                owner.getLastName().compareToIgnoreCase(other.getOwner().getLastName()) == 0 &&
                 location.compareToIgnoreCase(other.getLocation()) == 0 &&
                 date.compareToIgnoreCase(other.getDate()) == 0 &&
                 time.compareToIgnoreCase(other.getTime()) == 0);
