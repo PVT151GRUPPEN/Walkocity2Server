@@ -38,17 +38,7 @@ public class Badge {
             return levelName;
         }
     }*/
-    enum Category {
-        TOILET(1), TRASHCAN(2);
-        private final int categoryOption;
 
-        private Category(int categoryOption) {
-            this.categoryOption = categoryOption;
-        }
-        public int getCategoryOption() {
-            return categoryOption;
-        }
-    }
     enum Level {
         BRONZE(1), SILVER(2), GOLD(3), RUBY(4), DIAMOND(5);
         private final int levelNo;

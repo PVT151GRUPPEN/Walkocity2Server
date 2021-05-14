@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class UserAccount {
     @Id //ska vara unik
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
