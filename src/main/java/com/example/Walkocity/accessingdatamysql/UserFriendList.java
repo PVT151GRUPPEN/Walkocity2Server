@@ -13,21 +13,21 @@ public class UserFriendList {
     private Integer id; //kanske egentligen kan ha foreign key och hänvisa till userId
 
     @OneToMany
-    private List<User> friends = new ArrayList<>();
+    private List<UserAccount> friends = new ArrayList<>();
 
 
     public UserFriendList() {
     }
 
-    public List<User> getFriends() {
+    public List<UserAccount> getFriends() {
         return friends;
     }
 
-    public void addFriend(User newFriend) {
+    public void addFriend(UserAccount newFriend) {
         friends.add(newFriend);
     }
 
-    public void removeFriend(User user) { //might want to check if user exists as friend
+    public void removeFriend(UserAccount user) { //might want to check if user exists as friend
         friends.remove(user);
     }
 

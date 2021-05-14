@@ -12,4 +12,23 @@ public class JoinedWalkList {
 
 
     private List<WalkEvent> joinedWalks = new ArrayList<>();
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void addJoinedWalk(WalkEvent walk) {
+        joinedWalks.add(walk);
+    }
+
+    public void removeJoinedWalk(WalkEvent walk) {
+        joinedWalks.remove(walk); //check if it exists
+    }
+    public List<WalkEvent> getJoinedWalks() {
+        return joinedWalks;
+    }
 }

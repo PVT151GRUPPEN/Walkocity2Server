@@ -4,14 +4,10 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class UserAccount {
     @Id //ska vara unik
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
-    private String firstName;
-
-    private String lastName;
 
     private String email;
 
@@ -33,22 +29,6 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String name) {
-        this.firstName = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {
