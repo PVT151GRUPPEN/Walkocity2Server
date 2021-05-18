@@ -66,11 +66,12 @@ public class MainController {
     }
 
     @GetMapping(path="/all/useraccount")
-    public @ResponseBody UserAccount getUserAccount(@RequestParam String email) {
+    public @ResponseBody Optional<UserAccount> getUserAccount(@RequestParam String email) {
+        UserAccount user = null;
         for (UserAccount userAccount: userAccountRepository.findAll()) {
             if (userAccount.getEmail().equals(email)) {
-                return userAccount;
+                user = userAccount;
             }
-        } return null;
+        } return Optional.ofNullable(user);
     }
 }
