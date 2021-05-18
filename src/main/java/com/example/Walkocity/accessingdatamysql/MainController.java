@@ -64,4 +64,13 @@ public class MainController {
         // This returns a JSON or XML with the users
         return userAccountRepository.findAll();
     }
+
+    @GetMapping(path="/all/useraccount")
+    public @ResponseBody UserAccount getUserAccount(@RequestParam String email) {
+        for (UserAccount userAccount: userAccountRepository.findAll()) {
+            if (userAccount.getEmail().equals(email)) {
+                return userAccount;
+            }
+        } return null;
+    }
 }
