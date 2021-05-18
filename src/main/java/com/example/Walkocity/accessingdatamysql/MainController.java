@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDate;
+import java.util.Iterator;
+import java.util.Optional;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
@@ -39,18 +41,16 @@ public class MainController {
     }
 
     @PostMapping(path="/add/useraccount") // Map ONLY POST Requests
-    public @ResponseBody String addNewUser (@RequestParam String emailInput, @RequestParam String passwordInput) {
+    public @ResponseBody
+    Optional<UserAccount> addNewUser (@RequestParam String email, @RequestParam String password) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-
-        char[] password = passwordInput.toCharArray();
-
         UserAccount user = new UserAccount();
-        user.setEmail(emailInput);
+        user.setEmail(email);
         user.setPassword(password);
         user.setStartDate(LocalDate.now());
         userAccountRepository.save(user);
-        return "Saved";
+        return userAccountRepository.findById(user.getId());
     }
 
     @GetMapping(path="/all/trashcans")

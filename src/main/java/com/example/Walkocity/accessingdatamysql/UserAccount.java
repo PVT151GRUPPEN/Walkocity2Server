@@ -12,7 +12,7 @@ public class UserAccount {
 
     private String email;
 
-    private char[] password;
+    private String password;
 
     private LocalDate startDate;
 
@@ -46,11 +46,11 @@ public class UserAccount {
         this.startDate = startDate;
     }
 
-    public char[] getPassword() { //security check
+    public String getPassword() { //security check
         return password;
     }
 
-    public void setPassword(char[] password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }
