@@ -3,9 +3,10 @@ package com.example.Walkocity.accessingdatamysql;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
 public class UserAccount {
-    @Id //ska vara unik
+    @Id //ska vara unik@Entity // This tells Hibernate to make a table out of this class
+
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
