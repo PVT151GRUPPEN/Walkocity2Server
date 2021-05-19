@@ -76,4 +76,16 @@ public class MainController {
             }
         } return user;
     }
+
+    @GetMapping(path="/all/login")
+    public @ResponseBody UserAccount getUserAccount(@RequestParam String email, @RequestParam String password) {
+        UserAccount user = new UserAccount();
+        user.setId(-1);
+        for (UserAccount userAccount: userAccountRepository.findAll()) {
+            if (userAccount.getEmail().equals(email) && userAccount.getPassword().equals(password)) {
+                user.setId(userAccount.getId());
+            }
+        } return user;
+    }
+
 }
