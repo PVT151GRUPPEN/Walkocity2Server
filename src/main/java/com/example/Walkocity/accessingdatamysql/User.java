@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class User {
 
     @Id //ska vara unik
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String firstName;
     private String lastName;
