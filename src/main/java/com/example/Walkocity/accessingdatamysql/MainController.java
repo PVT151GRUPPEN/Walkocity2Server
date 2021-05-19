@@ -1,5 +1,6 @@
 package com.example.Walkocity.accessingdatamysql;
 
+import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,13 +67,16 @@ public class MainController {
     }
 
     @GetMapping(path="/all/useraccount")
-    public @ResponseBody UserAccount getUserAccount(@RequestParam String email) {
-        UserAccount user = new UserAccount();
-        user.setId(-1);
+    public @ResponseBody Integer getUserAccount(@RequestParam String email) {
+        //UserAccount user = new UserAccount();
+        Integer id = -1;
+        //user.setId(-1);
         for (UserAccount userAccount: userAccountRepository.findAll()) {
             if (userAccount.getEmail().equals(email)) {
-                user = userAccount;
+               // user = userAccount;
+                id = userAccount.getId();
             }
-        } return user;
+        } //return user;
+        return id;
     }
 }
