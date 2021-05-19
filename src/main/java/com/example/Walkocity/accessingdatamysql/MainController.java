@@ -67,16 +67,13 @@ public class MainController {
     }
 
     @GetMapping(path="/all/useraccount")
-    public @ResponseBody Integer getUserAccount(@RequestParam String email) {
-        //UserAccount user = new UserAccount();
-        Integer id = -1;
-        //user.setId(-1);
+    public @ResponseBody UserAccount getUserAccount(@RequestParam String email) {
+        UserAccount user = new UserAccount();
+        user.setId(-1);
         for (UserAccount userAccount: userAccountRepository.findAll()) {
             if (userAccount.getEmail().equals(email)) {
-               // user = userAccount;
-                id = userAccount.getId();
+                user.setId(userAccount.getId());
             }
-        } //return user;
-        return id;
+        } return user;
     }
 }
