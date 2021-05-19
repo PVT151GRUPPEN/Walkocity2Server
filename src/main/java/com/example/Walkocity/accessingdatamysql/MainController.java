@@ -1,6 +1,6 @@
 package com.example.Walkocity.accessingdatamysql;
 
-import com.fasterxml.jackson.databind.util.JSONWrappedObject;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDate;
-import java.util.Iterator;
 import java.util.Optional;
 
 @Controller // This means that this class is a Controller
@@ -46,7 +45,7 @@ public class MainController {
 
     @PostMapping(path="/add/useraccount") // Map ONLY POST Requests
     public @ResponseBody
-    Optional<UserAccount> addNewUser (@RequestParam String email, @RequestParam String password) {
+    Optional<UserAccount> addNewUserAccount (@RequestParam String email, @RequestParam String password) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         UserAccount user = new UserAccount();
@@ -59,18 +58,18 @@ public class MainController {
 
     @PostMapping(path="/add/user") // Map ONLY POST Requests
     public @ResponseBody
-    Optional<User> addNewUserProfile (@RequestParam String firstName, @RequestParam String lastName,
-                                             @RequestParam Integer age, @RequestParam String gender, @RequestParam String country) {
+    Optional<User> addNewUserProfile (@RequestParam String firstname, @RequestParam String lastname,
+                                      @RequestParam String age, @RequestParam String gender, @RequestParam String country) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         User user = new User();
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setAge(age);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
+        user.setAge(Integer.parseInt(age));
         user.setGender(gender);
         user.setCountry(country);
         userRepository.save(user);
-        return userRepository.findById(user.getId());
+        return userRepository.findById(16);
     }
 
     @GetMapping(path="/all/trashcans")
