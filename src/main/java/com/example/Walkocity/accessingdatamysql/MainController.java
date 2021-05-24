@@ -54,7 +54,7 @@ public class MainController {
     @PostMapping(path="/add/user") // Map ONLY POST Requests
     public @ResponseBody
     Optional<User> addNewUserProfile (@RequestParam String id, @RequestParam String firstname, @RequestParam String lastname,
-                                      @RequestParam String age, @RequestParam String genderIdentity, @RequestParam String genderSearch, @RequestParam String country, @RequestParam String photo) {
+                                      @RequestParam String age, @RequestParam String genderIdentity, @RequestParam String genderSearch, @RequestParam String country, @RequestParam String languages, @RequestParam String photo) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         User user = new User();
@@ -65,6 +65,7 @@ public class MainController {
         user.setGenderIdentity(genderIdentity);
         user.setGenderSearch(genderSearch);
         user.setCountry(country);
+        user.setLanguages(languages);
         user.setPhoto(photo);
         userRepository.save(user);
         return userRepository.findById(Integer.parseInt(id));
