@@ -16,6 +16,8 @@ public class UserAccount {
 
     private LocalDate startDate;
 
+    private String facebookId;
+
     @OneToOne
     private UserAccomplishment accomp;
 
@@ -52,5 +54,13 @@ public class UserAccount {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setFacebookId(String facebookId) {
+        this.facebookId = facebookId;
+    }
+
+    public String getFacebookId() {
+        return facebookId;
     }
 }
