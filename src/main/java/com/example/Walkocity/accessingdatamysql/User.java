@@ -13,18 +13,8 @@ public class User {
     private String genderIdentity;
     private String genderSearch;
     private String country;
+    private String languages;
     private String photo;
-
-
-    /* Måste vara lista av Languages (klass)?
-    @OneToMany
-    private List<String> languages = new ArrayList<>();
-*/
-    @OneToOne
-    private UserAccomplishment accomp;
-
-    @OneToOne
-    private UserFriendList friendList;
 
     public void setId(Integer id) {
         this.id = id;
@@ -90,28 +80,12 @@ public class User {
         return photo;
     }
 
-    /*
-            public void setLanguages(String[] languages) {
-                this.languages = languages;
-            }
-
-            public String[] getLanguages() {
-                return languages;
-            }
-        */
-    public void setAccomp(UserAccomplishment accomp) {
-        this.accomp = accomp;
+    public void setLanguages(String languages) {
+        this.languages = languages;
     }
 
-    public UserAccomplishment getAccomp() {
-        return accomp;
+    public String getLanguages() {
+        return languages;
     }
 
-    public void setFriendList(UserFriendList friendList) {
-        this.friendList = friendList;
-    }
-
-    public UserFriendList getFriendList() {
-        return friendList;
-    }
 }
