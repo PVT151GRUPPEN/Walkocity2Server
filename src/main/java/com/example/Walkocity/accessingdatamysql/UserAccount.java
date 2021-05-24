@@ -18,12 +18,6 @@ public class UserAccount {
 
     private String facebookId;
 
-    @OneToOne
-    private UserAccomplishment accomp;
-
-    @OneToOne
-    private UserFriendList friendList;
-
     public Integer getId() {
         return id;
     }
