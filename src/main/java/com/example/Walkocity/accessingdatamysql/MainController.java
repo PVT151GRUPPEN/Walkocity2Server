@@ -25,7 +25,7 @@ public class MainController {
     private UserRepository userRepository;
 
     @PostMapping(path= "/add/station") // Map ONLY POST Requests
-    public @ResponseBody String addNewTrashCan(@RequestParam String longitude
+    public @ResponseBody String addNewStation(@RequestParam String longitude
             , @RequestParam String latitude) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
@@ -53,14 +53,14 @@ public class MainController {
 
     @PostMapping(path="/add/user") // Map ONLY POST Requests
     public @ResponseBody
-    Optional<User> addNewUserProfile (@RequestParam String id, @RequestParam String firstname, @RequestParam String lastname,
+    Optional<User> addNewUserProfile (@RequestParam String id, @RequestParam String firstName, @RequestParam String lastName,
                                       @RequestParam String age, @RequestParam String genderIdentity, @RequestParam String genderSearch, @RequestParam String country, @RequestParam String languages, @RequestParam String photo) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         User user = new User();
         user.setId(Integer.parseInt(id));
-        user.setFirstName(firstname);
-        user.setLastName(lastname);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
         user.setAge(Integer.parseInt(age));
         user.setGenderIdentity(genderIdentity);
         user.setGenderSearch(genderSearch);
