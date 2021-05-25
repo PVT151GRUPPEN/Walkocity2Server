@@ -98,7 +98,7 @@ public class MainController {
         User user = new User();
         user.setId(-1);
         for (User u: userRepository.findAll()) {
-            if (u.getId().equals(String.valueOf(id))) {
+            if (u.getId().equals(Integer.parseInt(id))) {
                 user = u;
             }
         } return user;
