@@ -15,6 +15,8 @@ public class User {
     private String country;
     private String languages;
     private String photo;
+    private String interests;
+    private String about;
 
     public void setId(Integer id) {
         this.id = id;
@@ -72,14 +74,6 @@ public class User {
         return genderSearch;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
     public void setLanguages(String languages) {
         this.languages = languages;
     }
@@ -88,4 +82,27 @@ public class User {
         return languages;
     }
 
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setInterests(String interests) {
+        this.interests = interests;
+    }
+
+    public String getInterests() {
+        return interests;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getAbout() {
+        return about;
+    }
 }

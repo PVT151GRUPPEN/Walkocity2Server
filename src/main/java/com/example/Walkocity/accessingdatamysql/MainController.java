@@ -54,7 +54,7 @@ public class MainController {
     @PostMapping(path="/add/user") // Map ONLY POST Requests
     public @ResponseBody
     Optional<User> addNewUserProfile (@RequestParam String id, @RequestParam String firstName, @RequestParam String lastName,
-                                      @RequestParam String age, @RequestParam String genderIdentity, @RequestParam String genderSearch, @RequestParam String country, @RequestParam String languages, @RequestParam String photo) {
+                                      @RequestParam String age, @RequestParam String genderIdentity, @RequestParam String genderSearch, @RequestParam String country, @RequestParam String languages, @RequestParam String photo, @RequestParam String interests, @RequestParam String about) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         User user = new User();
@@ -67,9 +67,35 @@ public class MainController {
         user.setCountry(country);
         user.setLanguages(languages);
         user.setPhoto(photo);
+        user.setInterests(interests);
+        user.setAbout(about);
         userRepository.save(user);
         return userRepository.findById(Integer.parseInt(id));
     }
+
+    @PostMapping(path="/update/user") // Map ONLY POST Requests
+    public @ResponseBody
+    void updateUserProfile (@RequestParam String id, @RequestParam String firstName, @RequestParam String lastName,
+                                      @RequestParam String age, @RequestParam String genderIdentity, @RequestParam String genderSearch, @RequestParam String country, @RequestParam String languages, @RequestParam String photo, @RequestParam String interests, @RequestParam String about) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+
+        for (User user: userRepository.findAll()) {
+            if (user.getId().equals(Integer.parseInt(id))) {
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setAge(Integer.parseInt(age));
+                user.setGenderIdentity(genderIdentity);
+                user.setGenderSearch(genderSearch);
+                user.setCountry(country);
+                user.setLanguages(languages);
+                user.setPhoto(photo);
+                user.setInterests(interests);
+                user.setAbout(about);
+            }
+        }
+    }
+
 
     @GetMapping(path="/all/stations")
     public @ResponseBody Iterable<Station> getAllStations() {
