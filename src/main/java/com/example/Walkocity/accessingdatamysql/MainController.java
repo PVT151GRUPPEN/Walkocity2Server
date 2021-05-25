@@ -94,11 +94,11 @@ public class MainController {
 
 
     @GetMapping(path="/user/byId")
-    public @ResponseBody User getUser(@RequestParam Integer id) {
+    public @ResponseBody User getUser(@RequestParam String id) {
         User user = new User();
         user.setId(-1);
         for (User u: userRepository.findAll()) {
-            if (u.getId().equals(id)) {
+            if (u.getId().equals(String.valueOf(id))) {
                 user = u;
             }
         } return user;
