@@ -6,10 +6,18 @@ import java.util.List;
 
 @Entity
 public class UserAccomplishment { //detta ska då kopplas ihop med det som ska displayas: bilder och vissa vilka badges som är aktiva eller ej
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id; //kanske egentligen kan ha foreign key och hänvisa till userId
     private int level;
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
     private int points; //hur gör vi med stationer och dess poäng, blir isf en litenliten klass
     //private List<Badge> badges = new ArrayList<>(); //ska man ha separate listor för kategorierna
     private int toiletCount = 0; //
@@ -21,7 +29,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
         this.points = 0;
     }
 
-    /*
+
 
     public void addPoints(int points) { //ska användas av stationer och badges
         this.points += points;
@@ -42,7 +50,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
         if(station.getCategory().equals(StationCategory.TRASHCAN)) {
             points += station.getPoints();
             trashCount++;
-            checkTrashLevel();
+            //checkTrashLevel();
         }
         stationCount++;
 
@@ -76,7 +84,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
         }
     }
 
-    public void checkTrashLevel() {
+/*    public void checkTrashLevel() {
         if (trashCount == 1) {
             Badge b = new Badge(StationCategory.TRASHCAN, Badge.Level.BRONZE);
           //  badges.add(b);
@@ -130,9 +138,9 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
             badges.add(b);
             addPoints(b.getPoints());
         }
-    }
+    }*/
 
-    public void checkUserLevel() { // behöver ingen level 1 eftersom det är default
+    public Integer checkUserLevel() { // behöver ingen level 1 eftersom det är default
         if(points == 2000)
             level = 2;
         if(points == 3000)
@@ -161,6 +169,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
             level = 14;
         if(points == 50000)
             level = 15;
+        return level;
     }
 
     public int getToiletCount() {
@@ -175,22 +184,28 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
         return stationCount;
     }
 
-    public Integer getId() {
-        return id;
-    }
+
 
     public int getLevel() {
         return level;
     }
 
-    public int getPoints() {
-        return points;
-    }
 
+
+/*
     public List<Badge> getBadges() {
         return badges;
     }
+*/
 
 
-     */
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public int getPoints() {
+        return points;
+    }
 }

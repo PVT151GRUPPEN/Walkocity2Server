@@ -17,6 +17,10 @@ public class Station {
 
     }
 
+    public Station(Integer id, String type) {
+
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
