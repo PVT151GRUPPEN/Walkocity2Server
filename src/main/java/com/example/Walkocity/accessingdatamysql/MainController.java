@@ -220,7 +220,7 @@ public class MainController {
     }
 
     @GetMapping(path="/getUserAccomplishmentById")
-    public @ResponseBody Integer getUserAccomplishmentById(@RequestParam String id) {
+    public @ResponseBody HashMap<String, Integer> getUserAccomplishmentById(@RequestParam String id) {
         HashMap<String, Integer> returnHash = new HashMap<String, Integer>();
 
         for (UserAccomplishment userAccomplishment: userAccomplishmentRepository.findAll()) {
@@ -230,9 +230,11 @@ public class MainController {
                 returnHash.put("toilet_count", userAccomplishment.getToiletCount());
                 returnHash.put("trash_count", userAccomplishment.getTrashCount());
                 returnHash.put("cafe_count", userAccomplishment.getCafeCount());
+                return returnHash;
             }
         }
-        return -1;
+        returnHash.put("points", -1); // no user found
+        return returnHash;
     }
 
 
