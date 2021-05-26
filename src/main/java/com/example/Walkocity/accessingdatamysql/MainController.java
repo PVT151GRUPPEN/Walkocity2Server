@@ -69,6 +69,7 @@ public class MainController {
         user.setAge(Integer.parseInt(age));
         user.setGender(gender);
         user.setCountry(country);
+        //add language
         userRepository.save(user);
         return userRepository.findById(Integer.parseInt(id));
     }

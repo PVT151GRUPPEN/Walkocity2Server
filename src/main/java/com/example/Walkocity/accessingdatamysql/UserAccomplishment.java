@@ -21,6 +21,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
         this.points = 0;
     }
 
+    //metoder som ska kallas via android studio
     /*
 
     public void addPoints(int points) { //ska användas av stationer och badges

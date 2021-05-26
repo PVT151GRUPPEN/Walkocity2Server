@@ -18,9 +18,11 @@ public class User {
     private List<String> languages = new ArrayList<>();
 */
     @OneToOne
-    private UserAccomplishment accomp;
+    @GeneratedValue(strategy=GenerationType.AUTO) //to generate an "id"
+    private UserAccomplishment accomplishments;
 
     @OneToOne
+    @GeneratedValue(strategy=GenerationType.AUTO) //to generate an "id"
     private UserFriendList friendList;
 
     public void setId(Integer id) {
@@ -79,12 +81,12 @@ public class User {
         return languages;
     }
 */
-    public void setAccomp(UserAccomplishment accomp) {
-        this.accomp = accomp;
+    public void setAccomp(UserAccomplishment accomplishments) {
+        this.accomplishments = accomplishments;
     }
 
-    public UserAccomplishment getAccomp() {
-        return accomp;
+    public UserAccomplishment getAccomplishments() {
+        return accomplishments;
     }
 
     public void setFriendList(UserFriendList friendList) {
