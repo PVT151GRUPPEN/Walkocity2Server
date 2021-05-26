@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Optional;
 
 @Controller // This means that this class is a Controller
@@ -26,7 +29,7 @@ public class MainController {
     @Autowired
     private UserAccomplishmentRepository userAccomplishmentRepository;
 
-    @PostMapping(path= "/add/station") // Map ONLY POST Requests
+/*    @PostMapping(path= "/add/station") // Map ONLY POST Requests
     public @ResponseBody String addNewStation(@RequestParam String longitude
             , @RequestParam String latitude) {
         // @ResponseBody means the returned String is the response, not a view name
@@ -37,7 +40,7 @@ public class MainController {
         station.setLatitude(Double.parseDouble(latitude));
         stationRepository.save(station);
         return "Saved";
-    }
+    }*/
 
     @PostMapping(path="/add/useraccount") // Map ONLY POST Requests
     public @ResponseBody
@@ -99,20 +102,35 @@ public class MainController {
     }
 
 
-/*    @PostMapping(path="/collectStationUserId") // Map ONLY POST Requests
+    @PostMapping(path="/collectStationUserId") // Map ONLY POST Requests
     public @ResponseBody
-    Integer[] collectStationUserId (@RequestParam String id, @RequestParam String stationId,
-                                         @RequestParam String stationType) {
+    HashMap<String, Integer> collectStationUserId (@RequestParam String id, @RequestParam String stationId,
+                                           @RequestParam String stationType) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        Integer[] result;
+        HashMap<String, Integer> returnHash = new HashMap<String, Integer>();
+        boolean stationTaken = false;
         for (UserAccomplishment userAccomplishment: userAccomplishmentRepository.findAll()) {
             if (userAccomplishment.getId().equals(Integer.parseInt(id))) {
-                userAccomplishment.addStation(new Station(Integer.parseInt(stationId), stationType));
+                for (Station station: stationRepository.findAll()) {
+                    if(station.getUserId().equals(Integer.parseInt(id)) && station.getId().equals(Integer.parseInt(stationId))){
+                        stationTaken = true; // cheater detected. tried to click the same station twice within 15 minutes
+                    }
+                }
+                if(!stationTaken) {
+                    Station stationLog = new Station(Integer.parseInt(stationId), new Date().getTime(), Integer.parseInt(id));
+                    stationRepository.save(stationLog);
+                    userAccomplishment.addPoints(stationType);
+                }
+                returnHash.put("points", userAccomplishment.getPoints());
+                returnHash.put("station_count", userAccomplishment.getStationCount());
+                returnHash.put("toilet_count", userAccomplishment.getToiletCount());
+                returnHash.put("trash_count", userAccomplishment.getTrashCount());
+                returnHash.put("cafe_count", userAccomplishment.getCafeCount());
             }
         }
-        return result;
-    }*/
+        return returnHash;
+    }
 
     @GetMapping(path="/all/stations")
     public @ResponseBody Iterable<Station> getAllStations() {

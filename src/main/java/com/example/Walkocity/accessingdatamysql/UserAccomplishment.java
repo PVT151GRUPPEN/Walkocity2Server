@@ -6,6 +6,14 @@ import java.util.List;
 
 @Entity
 public class UserAccomplishment { //detta ska då kopplas ihop med det som ska displayas: bilder och vissa vilka badges som är aktiva eller ej
+    private static final Integer TRASH_STATION = 100;
+    private static final Integer TOILET_STATION = 100;
+    private static final Integer CAFE_STATION = 100;
+    private static final String TRASH_STATION_TYPE = "trash";
+    private static final String TOILET_STATION_TYPE = "toilet";
+    private static final String CAFE_STATION_TYPE = "cafe";
+
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -21,6 +29,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
     private int points; //hur gör vi med stationer och dess poäng, blir isf en litenliten klass
     //private List<Badge> badges = new ArrayList<>(); //ska man ha separate listor för kategorierna
     private int toiletCount = 0; //
+    private int cafeCount = 0; //
     private int trashCount = 0;
     private int stationCount = 0;
 
@@ -31,32 +40,34 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
 
 
 
-    public void addPoints(int points) { //ska användas av stationer och badges
-        this.points += points;
+    public void addPoints(String stationType) { //ska användas av stationer och badges
+        int addPoints = 0;
+        switch (stationType.toLowerCase()) {
+            case TRASH_STATION_TYPE:
+                addPoints = TRASH_STATION;
+                trashCount++;
+                break;
+            case TOILET_STATION_TYPE:
+                addPoints = TOILET_STATION;
+                toiletCount++;
+                break;
+            case CAFE_STATION_TYPE:
+                addPoints = CAFE_STATION;
+                cafeCount++;
+                break;
+        }
+        stationCount++;
+        this.points += addPoints;
         checkUserLevel();
     }
 
-    public void addBadge(Badge badge) {
-        addPoints(badge.getPoints());
-       // badges.add(badge);
-    }
+
 
     public void addStation(Station station) {
-        if(station.getCategory().equals(StationCategory.TOILET)) {
-            points += station.getPoints();
-            toiletCount++;
-            checkToiletLevel();
-        }
-        if(station.getCategory().equals(StationCategory.TRASHCAN)) {
-            points += station.getPoints();
-            trashCount++;
-            //checkTrashLevel();
-        }
-        stationCount++;
 
     }
 
-    public void checkToiletLevel() {  //delar ut badges när ett visst antal nås
+/*    public void checkToiletLevel() {  //delar ut badges när ett visst antal nås
         if (toiletCount == 1) {
             Badge b = new Badge(StationCategory.TOILET, Badge.Level.BRONZE);
           //  badges.add(b);
@@ -82,7 +93,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
           //  badges.add(b);
             addPoints(b.getPoints());
         }
-    }
+    }*/
 
 /*    public void checkTrashLevel() {
         if (trashCount == 1) {
@@ -207,5 +218,14 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
 
     public int getPoints() {
         return points;
+    }
+
+
+    public int getCafeCount() {
+        return cafeCount;
+    }
+
+    public void setCafeCount(int cafeCount) {
+        this.cafeCount = cafeCount;
     }
 }
