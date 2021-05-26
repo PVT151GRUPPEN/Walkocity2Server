@@ -10,20 +10,13 @@ public class User {
     private String firstName;
     private String lastName;
     private Integer age;
-    private String gender;
+    private String genderIdentity;
+    private String genderSearch;
     private String country;
-
-    /* Måste vara lista av Languages (klass)?
-    @OneToMany
-    private List<String> languages = new ArrayList<>();
-*/
-    @OneToOne
-    @GeneratedValue(strategy=GenerationType.AUTO) //to generate an "id"
-    private UserAccomplishment accomplishments;
-
-    @OneToOne
-    @GeneratedValue(strategy=GenerationType.AUTO) //to generate an "id"
-    private UserFriendList friendList;
+    private String languages;
+    private String photo;
+    private String interests;
+    private String about;
 
     public void setId(Integer id) {
         this.id = id;
@@ -57,14 +50,6 @@ public class User {
         return age;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
     public void setCountry(String country) {
         this.country = country;
     }
@@ -72,28 +57,52 @@ public class User {
     public String getCountry() {
         return country;
     }
-/*
-    public void setLanguages(String[] languages) {
+
+    public void setGenderIdentity(String gender) {
+        this.genderIdentity = gender;
+    }
+
+    public String getGenderIdentity() {
+        return genderIdentity;
+    }
+
+    public void setGenderSearch(String genderSearch) {
+        this.genderSearch = genderSearch;
+    }
+
+    public String getGenderSearch() {
+        return genderSearch;
+    }
+
+    public void setLanguages(String languages) {
         this.languages = languages;
     }
 
-    public String[] getLanguages() {
+    public String getLanguages() {
         return languages;
     }
-*/
-    public void setAccomp(UserAccomplishment accomplishments) {
-        this.accomplishments = accomplishments;
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
-    public UserAccomplishment getAccomplishments() {
-        return accomplishments;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setFriendList(UserFriendList friendList) {
-        this.friendList = friendList;
+    public void setInterests(String interests) {
+        this.interests = interests;
     }
 
-    public UserFriendList getFriendList() {
-        return friendList;
+    public String getInterests() {
+        return interests;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getAbout() {
+        return about;
     }
 }

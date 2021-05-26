@@ -15,11 +15,7 @@ public class UserAccount {
 
     private LocalDate startDate;
 
-    @OneToOne
-    private UserAccomplishment accomp;
-
-    @OneToOne
-    private UserFriendList friendList;
+    private String facebookId;
 
     public Integer getId() {
         return id;
@@ -51,5 +47,13 @@ public class UserAccount {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setFacebookId(String facebookId) {
+        this.facebookId = facebookId;
+    }
+
+    public String getFacebookId() {
+        return facebookId;
     }
 }
