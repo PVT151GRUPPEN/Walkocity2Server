@@ -121,6 +121,7 @@ public class MainController {
                     Station stationLog = new Station(Integer.parseInt(stationId), new Date().getTime(), Integer.parseInt(id));
                     stationRepository.save(stationLog);
                     userAccomplishment.addPoints(stationType);
+                    userAccomplishmentRepository.save(userAccomplishment);
                 }
                 returnHash.put("points", userAccomplishment.getPoints());
                 returnHash.put("station_count", userAccomplishment.getStationCount());
@@ -218,11 +219,17 @@ public class MainController {
         return -1;
     }
 
-    @GetMapping(path="/getBadgesForUserId")
-    public @ResponseBody Integer getBadgesForUserId(@RequestParam String id) {
+    @GetMapping(path="/getUserAccomplishmentById")
+    public @ResponseBody Integer getUserAccomplishmentById(@RequestParam String id) {
+        HashMap<String, Integer> returnHash = new HashMap<String, Integer>();
+
         for (UserAccomplishment userAccomplishment: userAccomplishmentRepository.findAll()) {
             if (userAccomplishment.getId().equals(Integer.parseInt(id))) {
-                //return userAccomplishment.get;
+                returnHash.put("points", userAccomplishment.getPoints());
+                returnHash.put("station_count", userAccomplishment.getStationCount());
+                returnHash.put("toilet_count", userAccomplishment.getToiletCount());
+                returnHash.put("trash_count", userAccomplishment.getTrashCount());
+                returnHash.put("cafe_count", userAccomplishment.getCafeCount());
             }
         }
         return -1;
