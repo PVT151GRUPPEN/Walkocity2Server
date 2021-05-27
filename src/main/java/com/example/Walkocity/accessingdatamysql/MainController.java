@@ -74,7 +74,7 @@ public class MainController {
         return userRepository.findById(Integer.parseInt(id));
     }
 
-    @PutMapping(path="/update/user") // Map ONLY PUT Requests
+    @PostMapping(path="/update/user") // Map ONLY POST Requests
     public @ResponseBody
     void updateUserProfile (@RequestParam String id, @RequestParam String firstName, @RequestParam String lastName,
                                       @RequestParam String age, @RequestParam String genderIdentity, @RequestParam String genderSearch, @RequestParam String country, @RequestParam String languages, @RequestParam String photo, @RequestParam String interests, @RequestParam String about) {
