@@ -48,6 +48,9 @@ public class MainController {
         userAccount.setStartDate(LocalDate.now());
         userAccount.setFacebookId(facebookId);
         userAccountRepository.save(userAccount);
+        UserAccomplishment userAccomplishment = new UserAccomplishment();
+        userAccomplishment.setId(userAccount.getId());
+        userAccomplishmentRepository.save(userAccomplishment);
         return userAccountRepository.findById(userAccount.getId());
     }
 
