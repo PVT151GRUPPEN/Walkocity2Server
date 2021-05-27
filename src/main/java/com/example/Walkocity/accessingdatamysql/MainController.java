@@ -115,7 +115,7 @@ public class MainController {
                     }
                 }
                 if(!stationTaken) {
-                    Station stationLog = new Station(Integer.parseInt(stationId), new Date().getTime(), Integer.parseInt(id));
+                    Station stationLog = new Station(stationId, new Date().getTime(), Integer.parseInt(id));
                     stationRepository.save(stationLog);
                     userAccomplishment.addPoints(stationType);
                     userAccomplishmentRepository.save(userAccomplishment);
