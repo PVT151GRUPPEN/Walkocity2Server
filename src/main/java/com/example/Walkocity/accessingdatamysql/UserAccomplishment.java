@@ -1,8 +1,6 @@
 package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class UserAccomplishment { //detta ska då kopplas ihop med det som ska displayas: bilder och vissa vilka badges som är aktiva eller ej
@@ -63,7 +61,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
 
 
 
-    public void addStation(Station station) {
+    public void addStation(StationLogEntry stationLogEntry) {
 
     }
 
