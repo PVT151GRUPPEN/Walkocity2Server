@@ -5,20 +5,18 @@ import javax.persistence.*;
 @Entity
 public class Station {
     @Id //ska vara unik
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id; //eller longitud latitud för att vara korrekt
-    private Double longitude;
-    private Double latitude;
-    private StationCategory category;
-    private int points = 100;
-    //private boolean collected;
+    private Long timestamp;
+    private Integer userId;
 
     public Station() {
 
     }
 
-    public Station(Integer id, String type) {
-
+    public Station(Integer id, Long timestamp, Integer userId) {
+        this.id = id;
+        this.timestamp = timestamp;
+        this.userId = userId;
     }
 
     public void setId(Integer id) {
@@ -29,35 +27,21 @@ public class Station {
         return id;
     }
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    public Long getTimestamp() {
+        return timestamp;
     }
 
-    public Double getLongitude() {
-        return longitude;
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public Double getLatitude() {
-        return latitude;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public void setCategory(StationCategory category) {
-        this.category = category;
-    }
 
-    public StationCategory getCategory() {
-        return category;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    public int getPoints() {
-        return points;
-    }
 }
