@@ -8,7 +8,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
     private static final Integer TOILET_STATION = 100;
     private static final Integer CAFE_STATION = 100;
     private static final String TRASH_STATION_TYPE = "trash";
-    private static final String TOILET_STATION_TYPE = "toilet";
+    private static final String TOILET_STATION_TYPE = "Toalett";
     private static final String CAFE_STATION_TYPE = " cafe";
 
 
