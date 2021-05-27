@@ -110,7 +110,7 @@ public class MainController {
         for (UserAccomplishment userAccomplishment: userAccomplishmentRepository.findAll()) {
             if (userAccomplishment.getId().equals(Integer.parseInt(id))) {
                 for (Station station: stationRepository.findAll()) {
-                    if(station.getUserId().equals(Integer.parseInt(id)) && station.getId().equals(Integer.parseInt(stationId))){
+                    if(station.getUserId().equals(id) && station.getId().equals(stationId)){
                         stationTaken = true; // cheater detected. tried to click the same station twice within 15 minutes
                     }
                 }
