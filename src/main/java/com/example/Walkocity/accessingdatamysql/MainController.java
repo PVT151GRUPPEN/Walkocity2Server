@@ -209,7 +209,10 @@ public class MainController {
     public @ResponseBody Integer getLevelForUserId(@RequestParam String id) {
         for (UserAccomplishment userAccomplishment: userAccomplishmentRepository.findAll()) {
             if (userAccomplishment.getId().equals(Integer.parseInt(id))) {
-                return userAccomplishment.checkUserLevel();
+
+                Integer level = userAccomplishment.checkUserLevel();
+                userAccomplishmentRepository.save(userAccomplishment);
+                return level;
             }
         }
         return -1;

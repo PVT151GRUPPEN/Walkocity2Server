@@ -151,6 +151,8 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
 
     public Integer checkUserLevel() { // behöver ingen level 1 eftersom det är default
         if(points == 2000)
+            level = 1;
+        if(points == 2000)
             level = 2;
         if(points == 3000)
             level = 3;
@@ -178,6 +180,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
             level = 14;
         if(points == 50000)
             level = 15;
+
         return level;
     }
 
