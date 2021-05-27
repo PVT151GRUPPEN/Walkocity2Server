@@ -2,11 +2,7 @@ package com.example.Walkocity.accessingdatamysql;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -75,7 +71,7 @@ public class MainController {
         return userRepository.findById(Integer.parseInt(id));
     }
 
-    @PostMapping(path="/update/user") // Map ONLY POST Requests
+    @PutMapping(path="/update/user") // Map ONLY PUT Requests
     public @ResponseBody
     void updateUserProfile (@RequestParam String id, @RequestParam String firstName, @RequestParam String lastName,
                                       @RequestParam String age, @RequestParam String genderIdentity, @RequestParam String genderSearch, @RequestParam String country, @RequestParam String languages, @RequestParam String photo, @RequestParam String interests, @RequestParam String about) {
@@ -94,6 +90,7 @@ public class MainController {
                 user.setPhoto(photo);
                 user.setInterests(interests);
                 user.setAbout(about);
+                userRepository.save(user);
             }
         }
     }
