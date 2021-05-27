@@ -108,8 +108,11 @@ public class MainController {
         boolean stationTaken = false;
         for (UserAccomplishment userAccomplishment: userAccomplishmentRepository.findAll()) {
             if (userAccomplishment.getId().equals(Integer.parseInt(id))) {
+                System.out.println("user id found " + id);
                 for (StationLogEntry stationLogEntry : stationLogEntryRepository.findAll()) {
-                    if(stationLogEntry.getUserId().equals(id) && stationLogEntry.getId().equals(stationId)){
+                    System.out.println("Sation log entry " + stationLogEntry.toString());
+                    if(stationLogEntry.getUserId().equals(Integer.parseInt(id)) && stationLogEntry.getId().equals(stationId)){
+                        System.out.println("user and station id found " + id + " statid  " + stationId);
                         stationTaken = true; // cheater detected. tried to click the same station twice within 15 minutes
                     }
                 }
