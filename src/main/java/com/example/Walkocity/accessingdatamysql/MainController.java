@@ -179,7 +179,7 @@ public class MainController {
         UserAccount user = new UserAccount();
         user.setId(-1);
         for (UserAccount userAccount: userAccountRepository.findAll()) {
-            if (userAccount.getFacebookId().equals(facebookId)) {
+            if (userAccount.getFacebookId() != null && userAccount.getFacebookId().equals(facebookId)) {
                 user.setId(userAccount.getId());
             }
         } return user;
