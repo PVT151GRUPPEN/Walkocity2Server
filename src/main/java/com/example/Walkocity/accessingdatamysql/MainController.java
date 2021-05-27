@@ -105,6 +105,7 @@ public class MainController {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         HashMap<String, Integer> returnHash = new HashMap<String, Integer>();
+        returnHash.put("stationAdded", 0); // station NOT added (yet)
         boolean stationTaken = false;
         for (UserAccomplishment userAccomplishment: userAccomplishmentRepository.findAll()) {
             if (userAccomplishment.getId().equals(Integer.parseInt(id))) {
@@ -120,13 +121,16 @@ public class MainController {
                     StationLogEntry stationLogEntryLog = new StationLogEntry(stationId, new Date().getTime(), Integer.parseInt(id));
                     stationLogEntryRepository.save(stationLogEntryLog);
                     userAccomplishment.addPoints(stationType);
+                    returnHash.put("stationAdded", 1); // station added
                     userAccomplishmentRepository.save(userAccomplishment);
                 }
+                // return all the data whether or not station was added
                 returnHash.put("points", userAccomplishment.getPoints());
                 returnHash.put("station_count", userAccomplishment.getStationCount());
                 returnHash.put("toilet_count", userAccomplishment.getToiletCount());
                 returnHash.put("trash_count", userAccomplishment.getTrashCount());
                 returnHash.put("cafe_count", userAccomplishment.getCafeCount());
+
             }
         }
         return returnHash;
