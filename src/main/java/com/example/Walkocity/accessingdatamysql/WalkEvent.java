@@ -1,23 +1,23 @@
 package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity @IdClass(WalkEventKey.class)
-public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allmänna walks
+public class WalkEvent implements Serializable { //fundera över hur vilken klass vi ska lagra alla allmänna walks
     private String eventName;
 
-
-    @Id @OneToOne
-    private User owner; //Ersätts av User-instans eller liknande
-    private String location;
-    @Id
+    @Id @Column(updatable = false)
+    private Integer ownerId; //Ersätts av User-instans eller liknande
+    @Id @Column(updatable = false)
     private String date;
-    @Id
+    @Id @Column(updatable = false)
     private String time;
-    private int slots;
+    private String location;
+    private Integer slots;
     private String gender;
     private String language;
-    private int takenSlots;
+    private Integer takenSlots;
 
     public void setEventName(String eventName) {
         this.eventName = eventName;
@@ -27,12 +27,12 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
         return eventName;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
-    public User getOwner() {
-        return owner;
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
     public void setLocation(String location) {
@@ -59,7 +59,7 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
         return time;
     }
 
-    public void setSlots(int slots) {
+    public void setSlots(Integer slots) {
         this.slots = slots;
     }
 
@@ -99,7 +99,7 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
         return language;
     }
 
-    public void setTakenSlots(int takenSlots) {
+    public void setTakenSlots(Integer takenSlots) {
         this.takenSlots = takenSlots;
     }
 
