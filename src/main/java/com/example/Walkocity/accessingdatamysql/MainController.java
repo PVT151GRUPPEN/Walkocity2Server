@@ -296,6 +296,19 @@ public class MainController {
         return user;
     }
 
+    @GetMapping(path = "/user/byName")
+    public @ResponseBody
+    Iterable<User> getUser(@RequestParam String firstName, @RequestParam String lastName) {
+        ArrayList<User> users = new ArrayList<>();
+        for (User u : userRepository.findAll()) {
+            if (u.getFirstName().equals(firstName) && u.getLastName().equals(lastName)) {
+                users.add(u);
+            }
+        }
+        return users;
+    }
+
+
     @GetMapping(path = "/useraccount/byEmail")
     public @ResponseBody
     UserAccount getUserAccount(@RequestParam String email) {
