@@ -8,6 +8,8 @@ public class WalkEvent implements Serializable { //fundera över hur vilken klas
     private String eventName;
 
     @Id @Column(updatable = false)
+    private Long walkEventId;
+    @Id @Column(updatable = false)
     private Integer ownerId; //Ersätts av User-instans eller liknande
     @Id @Column(updatable = false)
     private String date;
@@ -25,6 +27,14 @@ public class WalkEvent implements Serializable { //fundera över hur vilken klas
 
     public String getEventName() {
         return eventName;
+    }
+
+    public Long getWalkEventId() {
+        return walkEventId;
+    }
+
+    public void setWalkEventId(Long walkEventId) {
+        this.walkEventId = walkEventId;
     }
 
     public void setOwnerId(Integer ownerId) {
