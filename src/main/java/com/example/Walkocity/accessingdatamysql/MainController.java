@@ -27,11 +27,12 @@ public class MainController {
 
     @Autowired
     private FriendshipRepository friendshipRepository;
-
+/*
     @Autowired
     private WalkEventRepository walkEventRepository;
-    @Autowired
-    private JoinedWalkRepository joinedWalkRepository;
+*/
+    //@Autowired
+    //private JoinedWalkRepository joinedWalkRepository;
 
 /*    @PostMapping(path= "/add/station") // Map ONLY POST Requests
     public @ResponseBody String addNewStation(@RequestParam String longitude
@@ -99,14 +100,13 @@ public class MainController {
         friendshipRepository.save(friendship);
         friendshipRepository.save(friendshipTwo);
     }
-
+/*
     @PostMapping(path = "/add/walkEvent") // Map ONLY POST Requests
     public @ResponseBody
-    void addWalkEvent(@RequestParam String ownerId, @RequestParam String location, @RequestParam String date, @RequestParam String time, @RequestParam String slots, @RequestParam String gender, @RequestParam String language, @RequestParam String takenSlots, @RequestParam String walkEventId) {
+    void addWalkEvent(@RequestParam String ownerId, @RequestParam String location, @RequestParam String date, @RequestParam String time, @RequestParam String slots, @RequestParam String gender, @RequestParam String language, @RequestParam String takenSlots) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         WalkEvent walkEvent = new WalkEvent();
-        walkEvent.setWalkEventId(Long.parseLong(walkEventId));
         walkEvent.setOwnerId(Integer.parseInt(ownerId));
         walkEvent.setLocation(location);
         walkEvent.setDate(date);
@@ -133,7 +133,7 @@ public class MainController {
         joinedWalk.setTime(time);
        joinedWalkRepository.save(joinedWalk);
     }
-
+*/
 
     @PostMapping(path = "/update/user") // Map ONLY POST Requests
     public @ResponseBody
