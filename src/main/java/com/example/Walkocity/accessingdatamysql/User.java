@@ -12,6 +12,7 @@ public class User {
     private Integer age;
     private String genderIdentity;
     private String genderSearch;
+    private String genderSender;
     private String country;
     private String languages;
     private String photo;
@@ -72,6 +73,14 @@ public class User {
 
     public String getGenderSearch() {
         return genderSearch;
+    }
+
+    public String getGenderSender() {
+        return genderSender;
+    }
+
+    public void setGenderSender(String genderSender) {
+        this.genderSender = genderSender;
     }
 
     public void setLanguages(String languages) {

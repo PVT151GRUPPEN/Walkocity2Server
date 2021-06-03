@@ -1,8 +1,6 @@
 package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class UserAccomplishment { //detta ska då kopplas ihop med det som ska displayas: bilder och vissa vilka badges som är aktiva eller ej
@@ -10,8 +8,8 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
     private static final Integer TOILET_STATION = 100;
     private static final Integer CAFE_STATION = 100;
     private static final String TRASH_STATION_TYPE = "trash";
-    private static final String TOILET_STATION_TYPE = "toilet";
-    private static final String CAFE_STATION_TYPE = "cafe";
+    private static final String TOILET_STATION_TYPE = "Toalett";
+    private static final String CAFE_STATION_TYPE = " cafe";
 
 
     public void setId(Integer id) {
@@ -63,7 +61,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
 
 
 
-    public void addStation(Station station) {
+    public void addStation(StationLogEntry stationLogEntry) {
 
     }
 
@@ -153,6 +151,8 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
 
     public Integer checkUserLevel() { // behöver ingen level 1 eftersom det är default
         if(points == 2000)
+            level = 1;
+        if(points == 2000)
             level = 2;
         if(points == 3000)
             level = 3;
@@ -180,6 +180,7 @@ public class UserAccomplishment { //detta ska då kopplas ihop med det som ska d
             level = 14;
         if(points == 50000)
             level = 15;
+
         return level;
     }
 
