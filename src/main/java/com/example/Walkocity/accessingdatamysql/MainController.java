@@ -133,6 +133,16 @@ public class MainController {
         return returnHash;
     }
 
+    @PostMapping(path="/add/walkevent") // Map ONLY POST Requests
+    public @ResponseBody
+    String addNewUserProfile (@RequestParam String id, @RequestParam String name, @RequestParam String owner,
+                                      @RequestParam String location, @RequestParam String timeDate, @RequestParam String slots, @RequestParam String gender, @RequestParam String languages, @RequestParam String noOfPeople, @RequestParam String description) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+
+        return "";
+    }
+
     @GetMapping(path="/all/stations")
     public @ResponseBody Iterable<Station> getAllStations() {
         // This returns a JSON or XML with the users
