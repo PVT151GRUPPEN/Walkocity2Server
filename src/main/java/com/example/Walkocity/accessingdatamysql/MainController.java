@@ -238,6 +238,58 @@ public class MainController {
         }
     }
 
+    @DeleteMapping(path = "/remove/walkEvent") // Map ONLY DELETE Requests
+    public @ResponseBody
+    void removeWalkEvent(@RequestParam String walkEventId) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+        for (WalkEvent walkEvent : walkEventRepository.findAll()) {
+            if (walkEvent.getId().equals(Integer.parseInt(walkEventId))) {
+                walkEventRepository.delete(walkEvent);
+            }
+        }
+        for (JoinedWalk joinedWalk : joinedWalkRepository.findAll()) {
+            if (joinedWalk.getWalkEventId().equals(Integer.parseInt(walkEventId))) {
+                joinedWalkRepository.delete(joinedWalk);
+            }
+        }
+    }
+
+    @DeleteMapping(path = "/remove/joinedWalk") // Map ONLY DELETE Requests
+    public @ResponseBody
+    void removeJoinedWalk(@RequestParam String walkEventId, @RequestParam String userId) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+        for (JoinedWalk joinedWalk : joinedWalkRepository.findAll()) {
+            if (joinedWalk.getWalkEventId().equals(Integer.parseInt(walkEventId)) && joinedWalk.getUserId().equals(Integer.parseInt(userId))) {
+                joinedWalkRepository.delete(joinedWalk);
+            }
+        }
+    }
+
+    @GetMapping(path = "/joinedWalks/byId")
+    public @ResponseBody
+    Iterable<WalkEvent> getJoinedWalksById(@RequestParam String userId) {
+        ArrayList<WalkEvent> joinedWalks = new ArrayList<>();
+        for (JoinedWalk joinedWalk : joinedWalkRepository.findAll()) {
+            if (joinedWalk.getUserId().equals(Integer.parseInt(userId))) {
+                for (WalkEvent walkEvent : walkEventRepository.findAll()) {
+                    if (walkEvent.getId().equals(joinedWalk.getWalkEventId())) {
+                        joinedWalks.add(walkEvent);
+                    }
+                }
+            }
+        } return joinedWalks;
+    }
+
+    @GetMapping(path = "/all/walkEvents")
+    public @ResponseBody
+    Iterable<WalkEvent> getAllWalkEvents() {
+        // This returns a JSON or XML with the users
+        return walkEventRepository.findAll();
+    }
+
+
     @GetMapping(path = "/friends/byId")
     public @ResponseBody
     Iterable<User> getFriendsById(@RequestParam String id) {

@@ -16,6 +16,11 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
     private String language;
     private Integer takenSlots;
 
+
+    public Integer getId() {
+        return id;
+    }
+
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
