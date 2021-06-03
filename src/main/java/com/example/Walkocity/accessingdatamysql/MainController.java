@@ -103,10 +103,11 @@ public class MainController {
 
     @PostMapping(path = "/add/walkEvent") // Map ONLY POST Requests
     public @ResponseBody
-    void addWalkEvent(@RequestParam String ownerId, @RequestParam String location, @RequestParam String date, @RequestParam String time, @RequestParam String slots, @RequestParam String gender, @RequestParam String language, @RequestParam String takenSlots) {
+    void addWalkEvent(@RequestParam String eventName, @RequestParam String ownerId, @RequestParam String location, @RequestParam String date, @RequestParam String time, @RequestParam String slots, @RequestParam String gender, @RequestParam String language, @RequestParam String takenSlots) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         WalkEvent walkEvent = new WalkEvent();
+        walkEvent.setEventName(eventName);
         walkEvent.setOwnerId(Integer.parseInt(ownerId));
         walkEvent.setLocation(location);
         walkEvent.setDate(date);
