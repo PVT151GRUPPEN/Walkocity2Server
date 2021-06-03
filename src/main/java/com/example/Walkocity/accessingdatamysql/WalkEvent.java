@@ -8,7 +8,8 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
 
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private Integer ownerId; //Ersätts av User-instans eller liknande
+    @OneToOne
+    private User ownerUser; //Ersätts av User-instans eller liknande
     private Long dateTime;
     private String location;
     private Integer slots;
@@ -27,14 +28,6 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
 
     public String getEventName() {
         return eventName;
-    }
-
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
     }
 
     public void setLocation(String location) {
@@ -59,6 +52,19 @@ public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allm
 
     public int getSlots() {
         return slots;
+    }
+
+
+    public Integer getTakenSlots() {
+        return takenSlots;
+    }
+
+    public User getOwnerUser() {
+        return ownerUser;
+    }
+
+    public void setOwnerUser(User ownerUser) {
+        this.ownerUser = ownerUser;
     }
 
 

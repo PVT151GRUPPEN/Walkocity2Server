@@ -108,7 +108,7 @@ public class MainController {
         // @RequestParam means it is a parameter from the GET or POST request
         WalkEvent walkEvent = new WalkEvent();
         walkEvent.setEventName(eventName);
-        walkEvent.setOwnerId(Integer.parseInt(ownerId));
+        walkEvent.setOwnerUser(getUser(ownerId));
         walkEvent.setLocation(location);
         walkEvent.setDateTime(Long.parseLong(dateTime));
         Integer slotsInt = Integer.parseInt(slots);
