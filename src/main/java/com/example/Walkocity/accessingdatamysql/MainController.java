@@ -27,12 +27,12 @@ public class MainController {
 
     @Autowired
     private FriendshipRepository friendshipRepository;
-/*
+
     @Autowired
     private WalkEventRepository walkEventRepository;
-*/
-    //@Autowired
-    //private JoinedWalkRepository joinedWalkRepository;
+
+    @Autowired
+    private JoinedWalkRepository joinedWalkRepository;
 
 /*    @PostMapping(path= "/add/station") // Map ONLY POST Requests
     public @ResponseBody String addNewStation(@RequestParam String longitude
@@ -100,7 +100,7 @@ public class MainController {
         friendshipRepository.save(friendship);
         friendshipRepository.save(friendshipTwo);
     }
-/*
+
     @PostMapping(path = "/add/walkEvent") // Map ONLY POST Requests
     public @ResponseBody
     void addWalkEvent(@RequestParam String ownerId, @RequestParam String location, @RequestParam String date, @RequestParam String time, @RequestParam String slots, @RequestParam String gender, @RequestParam String language, @RequestParam String takenSlots) {
@@ -131,9 +131,8 @@ public class MainController {
         joinedWalk.setOwnerId(Integer.parseInt(ownerId));
         joinedWalk.setDate(date);
         joinedWalk.setTime(time);
-       joinedWalkRepository.save(joinedWalk);
+        joinedWalkRepository.save(joinedWalk);
     }
-*/
 
     @PostMapping(path = "/update/user") // Map ONLY POST Requests
     public @ResponseBody
