@@ -103,15 +103,14 @@ public class MainController {
 
     @PostMapping(path = "/add/walkEvent") // Map ONLY POST Requests
     public @ResponseBody
-    void addWalkEvent(@RequestParam String eventName, @RequestParam String ownerId, @RequestParam String location, @RequestParam String date, @RequestParam String time, @RequestParam String slots, @RequestParam String gender, @RequestParam String language, @RequestParam String takenSlots) {
+    void addWalkEvent(@RequestParam String eventName, @RequestParam String ownerId, @RequestParam String location, @RequestParam String dateTime, @RequestParam String slots, @RequestParam String gender, @RequestParam String language, @RequestParam String takenSlots) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         WalkEvent walkEvent = new WalkEvent();
         walkEvent.setEventName(eventName);
         walkEvent.setOwnerId(Integer.parseInt(ownerId));
         walkEvent.setLocation(location);
-        walkEvent.setDate(date);
-        walkEvent.setTime(time);
+        walkEvent.setDateTime(Long.parseLong(dateTime));
         Integer slotsInt = Integer.parseInt(slots);
         Integer takenSlotsInt = Integer.parseInt(takenSlots);
         walkEvent.setSlots(slotsInt);
@@ -124,14 +123,12 @@ public class MainController {
 
     @PostMapping(path = "/add/joinedWalk") // Map ONLY POST Requests
     public @ResponseBody
-    void addJoinedWalk(@RequestParam String id, @RequestParam String ownerId, @RequestParam String date, @RequestParam String time) {
+    void addJoinedWalk(@RequestParam String walkEventId, @RequestParam String userId) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         JoinedWalk joinedWalk = new JoinedWalk();
-        joinedWalk.setUserId(Integer.parseInt(id));
-        joinedWalk.setOwnerId(Integer.parseInt(ownerId));
-        joinedWalk.setDate(date);
-        joinedWalk.setTime(time);
+        joinedWalk.setUserId(Integer.parseInt(userId));
+        joinedWalk.setWalkEventId(Integer.parseInt(walkEventId));
         joinedWalkRepository.save(joinedWalk);
     }
 

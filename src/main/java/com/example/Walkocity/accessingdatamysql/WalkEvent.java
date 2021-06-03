@@ -1,18 +1,15 @@
 package com.example.Walkocity.accessingdatamysql;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
-@Entity @IdClass(WalkEventKey.class)
-public class WalkEvent implements Serializable { //fundera över hur vilken klass vi ska lagra alla allmänna walks
+@Entity
+public class WalkEvent { //fundera över hur vilken klass vi ska lagra alla allmänna walks
     private String eventName;
 
-    @Id @Column(updatable = false)
+    @Id @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
     private Integer ownerId; //Ersätts av User-instans eller liknande
-    @Id @Column(updatable = false)
-    private String date;
-    @Id @Column(updatable = false)
-    private String time;
+    private Long dateTime;
     private String location;
     private Integer slots;
     private String gender;
@@ -43,20 +40,12 @@ public class WalkEvent implements Serializable { //fundera över hur vilken klas
         return location;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateTime(Long date) {
+        this.dateTime = date;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getTime() {
-        return time;
+    public Long getDateTime() {
+        return dateTime;
     }
 
     public void setSlots(Integer slots) {
